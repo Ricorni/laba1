@@ -20,7 +20,7 @@ struct ArrayList
     std::size_t capacity;
 
     ArrayList() {
-        data = new T[0];
+        data = nullptr;
         size = 0;
         capacity = 0;
     }
@@ -30,51 +30,45 @@ struct ArrayList
     }
 
     void pushBack(const T& value) {
-        if (size < capacity) {
-            data[size] = value;
-            size++;
-        } else {
-            capacity++;
+        if (size == capacity) {
+            capacity = (capacity == 0) ? 1 : capacity * 2;
             T* newData = new T[capacity];
-            for (std::size_t i = 0; i < size; i++)
+            for (std::size_t i = 0; i < size; i++) {
                 newData[i] = data[i];
-            
+            }
             delete[] data;
             data = newData;
-
-            data[size] = value;
-            size++;
         }
+        data[size] = value;
+        size++;
     }
 
     void insert(const T& value, std::size_t index) {
         if (index > size) {
             throw std::out_of_range("index out of range");
-        } else if (index == size) {
-            pushBack(value);
-        } else
-        {
-            if (size < capacity) {
-                for (std::size_t i = size; i > index; i--) {
-                    data[i] = data[i - 1];
-                }
-                data[index] = value;
-                size++;
-
-            } else {
-                capacity++;
-                T* newData = new T[capacity];
-                for (std::size_t i = 0; i < index; i++)
-                    newData[i] = data[i];
-                newData[index] = value;
-                for (std::size_t i = index; i < size; i++) 
-                    newData[i + 1] = data[i];
-                
-                delete[] data;
-                data = newData;
-                size++;
-            }
         }
+        
+        if (index == size) {
+            pushBack(value);
+            return;
+        }
+
+        if (size == capacity) {
+            capacity = (capacity == 0) ? 1 : capacity * 2;
+            T* newData = new T[capacity];
+            for (std::size_t i = 0; i < size; i++) {
+                newData[i] = data[i];
+            }
+            delete[] data;
+            data = newData;
+        }
+
+        for (std::size_t i = size; i > index; i--) {
+            data[i] = data[i - 1];
+        }
+
+        data[index] = value;
+        size++;
     }
 
     T& operator[](std::size_t index) {
@@ -98,7 +92,7 @@ struct ArrayList
         return size;
     }
 
-    void print() {
+    void print() const {
         for (std::size_t i = 0; i < size; i++) {
             std::cout << data[i] << " ";
         }

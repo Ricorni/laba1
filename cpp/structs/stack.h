@@ -11,7 +11,7 @@
 
 template <typename T>
 struct Stack {
-    ForwardNode<T>* head = nullptr;
+    Node<T>* head = nullptr;
 
     Stack() {
         head = nullptr;
@@ -19,14 +19,14 @@ struct Stack {
 
     ~Stack() {
         while (head != nullptr) {
-            ForwardNode<T>* next = head -> next;
+            Node<T>* next = head->next;
             delete head;
             head = next;
         }
     }
 
     void push(const T& data) {
-        ForwardNode<T>* newNode = new ForwardNode<T>(data, head);
+        Node<T>* newNode = new Node<T>(data, head);
         head = newNode;
     }
 
@@ -35,9 +35,9 @@ struct Stack {
             throw std::out_of_range("stack is empty");
         }
 
-        ForwardNode<T>* delNode = head;
-        head = delNode -> next;
-        T data = delNode -> data;
+        Node<T>* delNode = head;
+        head = delNode->next;
+        T data = delNode->data;
         delete delNode;
         return data;
     }
@@ -46,27 +46,27 @@ struct Stack {
         if (head == nullptr) {
             throw std::out_of_range("stack is empty");
         }
-        return head -> data;
+        return head->data;
     }
 
-    bool isEmpty() {
+    bool isEmpty() const {
         return head == nullptr;
     }
 
-    void print() {
-        ForwardNode<T>* cur = head;
+    void print() const {
+        Node<T>* cur = head;
         while (cur != nullptr) {
-            std::cout << cur -> data << " ";
-            cur = cur -> next;
+            std::cout << cur->data << " ";
+            cur = cur->next;
         }
         std::cout << "\n";
     }
 
-    void save(std::ostream& os) const{
-        ForwardNode<T>* cur = head;
+    void save(std::ostream& os) const {
+        Node<T>* cur = head;
         while (cur != nullptr) {
-            os << cur -> data << "\n";
-            cur = cur -> next;
+            os << cur->data << "\n";
+            cur = cur->next;
         }
     }
 };

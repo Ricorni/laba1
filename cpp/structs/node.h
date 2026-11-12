@@ -1,47 +1,37 @@
 #pragma once
 
 template <typename T>
-struct ForwardNode {
+struct Node {
     T data;
-    ForwardNode* next;
+    Node* next;
 
-    ForwardNode() {
-        next = nullptr;
-    }
+    Node() : data(T()), next(nullptr) {} 
 
-    ForwardNode(const T& data) {
-        this -> data = data;
-        next = nullptr;
-    }
+    Node(const T& data) : data(data), next(nullptr) {}
 
-    ForwardNode(const T& data, ForwardNode* next) {
-        this -> data = data;
-        this -> next = next;
-    }
-
+    Node(const T& data, Node* next) : data(data), next(next) {}
 };
 
 template <typename T>
-struct DoublyNode {
+struct DoubleNode {
     T data;
-    DoublyNode* next;
-    DoublyNode* prev;
+    DoubleNode* next;
+    DoubleNode* prev;
 
+    DoubleNode() : data(T()), next(nullptr), prev(nullptr) {} 
 
-    DoublyNode() {
-        next = nullptr;
-        prev = nullptr;
-    }
+    DoubleNode(const T& data) : data(data), next(nullptr), prev(nullptr) {}
 
-    DoublyNode(const T& data) {
-        this -> data = data;
-        next = nullptr;
-        prev = nullptr;
-    }
-
-    DoublyNode(const T& data, DoublyNode* next, DoublyNode* prev) {
-        this -> data = data;
-        this -> next = next;
-        this -> prev = prev;
-    }
+    DoubleNode(const T& data, DoubleNode* next, DoubleNode* prev) 
+        : data(data), next(next), prev(prev) {}
 };
+
+template <typename T>
+struct TreeNode {
+    T data;
+    TreeNode<T>* left;
+    TreeNode<T>* right;
+
+    TreeNode() : data(T()), left(nullptr), right(nullptr) {} 
+    TreeNode(const T& val) : data(val), left(nullptr), right(nullptr) {}
+}; 

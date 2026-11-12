@@ -11,8 +11,8 @@
 
 template <typename T>
 struct Queue {
-    ForwardNode<T>* head = nullptr;
-    ForwardNode<T>* tail = nullptr;
+    Node<T>* head = nullptr;
+    Node<T>* tail = nullptr;
 
     Queue() {
         head = nullptr;
@@ -21,7 +21,7 @@ struct Queue {
 
     ~Queue() {
         while (head != nullptr) {
-            ForwardNode<T>* next = head -> next;
+            Node<T>* next = head->next;
             delete head;
             head = next;
         }
@@ -29,10 +29,10 @@ struct Queue {
     }
 
     void push(const T& data) {
-        ForwardNode<T>* newNode = new ForwardNode<T>(data, nullptr);
+        Node<T>* newNode = new Node<T>(data, nullptr);
 
         if (tail != nullptr) {
-            tail -> next = newNode;
+            tail->next = newNode;
         } else {
             head = newNode;
         }
@@ -44,9 +44,9 @@ struct Queue {
             throw std::out_of_range("queue is empty");
         }
 
-        ForwardNode<T>* delNode = head;
-        head = delNode -> next;
-        T data = delNode -> data;
+        Node<T>* delNode = head;
+        head = delNode->next;
+        T data = delNode->data;
         delete delNode;
 
         if (head == nullptr) {
@@ -59,34 +59,34 @@ struct Queue {
         if (head == nullptr) {
             throw std::out_of_range("queue is empty");
         }
-        return head -> data;
+        return head->data;
     }
 
     T& back() {
         if (tail == nullptr) {
             throw std::out_of_range("queue is empty");
         }
-        return tail -> data;
+        return tail->data;
     }
 
-    bool isEmpty() {
+    bool isEmpty() const {
         return head == nullptr;
     }
 
-    void print() {
-        ForwardNode<T>* cur = head;
+    void print() const {
+        Node<T>* cur = head;
         while (cur != nullptr) {
-            std::cout << cur -> data << " ";
-            cur = cur -> next;
+            std::cout << cur->data << " ";
+            cur = cur->next;
         }
         std::cout << "\n";
     }
 
     void save(std::ostream& os) const {
-        ForwardNode<T>* cur = head;
+        Node<T>* cur = head;
         while (cur != nullptr) {
-            os << cur -> data << "\n";
-            cur = cur -> next;
+            os << cur->data << "\n";
+            cur = cur->next;
         }
     }
 };

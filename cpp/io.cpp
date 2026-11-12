@@ -19,107 +19,65 @@ Command toCommand(const std::string& token) {
 
     // array
     else if (token[0] == 'M') {
-        if (token == "MPUSH")
-            return Command::MPUSH;
-        if (token == "MDEL")
-            return Command::MDEL;
-        if (token == "MGET")
-            return Command::MGET;
-        if (token == "MINSERT")
-            return Command::MINSERT;
-        if (token == "MSET")
-            return Command::MSET;
-        if (token == "MSIZE")
-            return Command::MSIZE;
+        if (token == "MPUSH") return Command::MPUSH;
+        if (token == "MDEL") return Command::MDEL;
+        if (token == "MGET") return Command::MGET;
+        if (token == "MINSERT") return Command::MINSERT;
+        if (token == "MSET") return Command::MSET;
+        if (token == "MSIZE") return Command::MSIZE;
     }
     // forward
     else if (token[0] == 'F') {
-        if (token == "FPUSH")         
-            return Command::FPUSH;
-        if (token == "FPUSHFRONT")    
-            return Command::FPUSHFRONT;
-        if (token == "FPOPFRONT")     
-            return Command::FPOPFRONT;
-        if (token == "FPOPBACK")      
-            return Command::FPOPBACK;
-        if (token == "FINSERTAFTER")  
-            return Command::FINSERTAFTER;
-        if (token == "FINSERTBEFORE") 
-            return Command::FINSERTBEFORE;
-        if (token == "FREMOVEAFTER")  
-            return Command::FREMOVEAFTER;
-        if (token == "FREMOVEBEFORE") 
-            return Command::FREMOVEBEFORE;
-        if (token == "FDEL")          
-            return Command::FDEL;
-        if (token == "FGET")          
-            return Command::FGET;
-        if (token == "FGETBACK")      
-            return Command::FGETBACK;
-        if (token == "FGETIDX")       
-            return Command::FGETIDX;
-        if (token == "FFIND")         
-            return Command::FFIND;
+        if (token == "FPUSH") return Command::FPUSH;
+        if (token == "FPUSHFRONT") return Command::FPUSHFRONT;
+        if (token == "FPOPFRONT") return Command::FPOPFRONT;
+        if (token == "FPOPBACK") return Command::FPOPBACK;
+        if (token == "FINSERTAFTER") return Command::FINSERTAFTER;
+        if (token == "FINSERTBEFORE") return Command::FINSERTBEFORE;
+        if (token == "FREMOVEAFTER") return Command::FREMOVEAFTER;
+        if (token == "FREMOVEBEFORE") return Command::FREMOVEBEFORE;
+        if (token == "FDEL") return Command::FDEL;
+        if (token == "FGET") return Command::FGET;
+        if (token == "FGETBACK") return Command::FGETBACK;
+        if (token == "FGETIDX") return Command::FGETIDX;
+        if (token == "FFIND") return Command::FFIND;
     }
     // doubly
     else if (token[0] == 'L') {
-        if (token == "LPUSH")         
-            return Command::LPUSH;
-        if (token == "LPUSHFRONT")    
-            return Command::LPUSHFRONT;
-        if (token == "LPOPFRONT")     
-            return Command::LPOPFRONT;
-        if (token == "LPOPBACK")      
-            return Command::LPOPBACK;
-        if (token == "LINSERTAFTER")  
-            return Command::LINSERTAFTER;
-        if (token == "LINSERTBEFORE") 
-            return Command::LINSERTBEFORE;
-        if (token == "LREMOVEAFTER")
-            return Command::LREMOVEAFTER;
-        if (token == "LREMOVEBEFORE") 
-            return Command::LREMOVEBEFORE;
-        if (token == "LDEL")          
-            return Command::LDEL;
-        if (token == "LGET")          
-            return Command::LGET;
-        if (token == "LGETBACK")      
-            return Command::LGETBACK;
-        if (token == "LGETIDX")       
-            return Command::LGETIDX;
-        if (token == "LFIND")         
-            return Command::LFIND;
+        if (token == "LPUSH") return Command::LPUSH;
+        if (token == "LPUSHFRONT") return Command::LPUSHFRONT;
+        if (token == "LPOPFRONT") return Command::LPOPFRONT;
+        if (token == "LPOPBACK") return Command::LPOPBACK;
+        if (token == "LINSERTAFTER") return Command::LINSERTAFTER;
+        if (token == "LINSERTBEFORE") return Command::LINSERTBEFORE;
+        if (token == "LREMOVEAFTER") return Command::LREMOVEAFTER;
+        if (token == "LREMOVEBEFORE") return Command::LREMOVEBEFORE;
+        if (token == "LDEL") return Command::LDEL;
+        if (token == "LGET") return Command::LGET;
+        if (token == "LGETBACK") return Command::LGETBACK;
+        if (token == "LGETIDX") return Command::LGETIDX;
+        if (token == "LFIND") return Command::LFIND;
     }
     // queue
     else if (token[0] == 'Q') {
-        if (token == "QPUSH")
-            return Command::QPUSH;
-        if (token == "QPOP")
-            return Command::QPOP;
-        if (token == "QGET")
-            return Command::QGET;
-        if (token == "QBACK")
-            return Command::QBACK;
+        if (token == "QPUSH") return Command::QPUSH;
+        if (token == "QPOP") return Command::QPOP;
+        if (token == "QGET") return Command::QGET;
+        if (token == "QBACK") return Command::QBACK;
     }
     // stack
     else if (token[0] == 'S') {
-        if (token == "SPUSH")
-            return Command::SPUSH;
-        if (token == "SPOP")
-            return Command::SPOP;
-        if (token == "SGET")
-            return Command::SGET;
+        if (token == "SPUSH") return Command::SPUSH;
+        if (token == "SPOP") return Command::SPOP;
+        if (token == "SGET") return Command::SGET;
     } 
-    // avl-tree
+    // tree
     else if (token[0] == 'T') {
-        if (token == "TINSERT") 
-            return Command::TINSERT;
-        if (token == "TDEL")    
-            return Command::TDEL;
-        if (token == "TGET")    
-            return Command::TGET;
-        if (token == "TBFS")    
-            return Command::TBFS;
+        if (token == "TINSERT") return Command::TINSERT;
+        if (token == "TDEL") return Command::TDEL;
+        if (token == "TGET") return Command::TGET;
+        if (token == "TBFS") return Command::TBFS;
+        if (token == "TISFULL") return Command::TISFULL;
     }
 
     // other
@@ -159,7 +117,7 @@ void load(const std::string& filePath, Database& db) {
         } else if (type == "ARRAY") {
             for (auto& v : values) db.arrays[name].pushBack(v);
         } else if (type == "TREE") {
-            for (auto& v : values) db.trees[name].add(v);
+            for (auto& v : values) db.trees[name].insert(std::stoi(v)); 
         }
     }
 }
